@@ -1,16 +1,73 @@
-## Hi there 👋
+<h1 align="center">你好，我是 林嘉怡 👋</h1>
 
-<!--
-**linjiyi/linjiyi** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+```
+~ $ greet --human
+你好，欢迎来到我的语音实验室。
+~ $ whoami
+林嘉怡
+~ $ pwd
+杭州
+```
 
-Here are some ideas to get you started:
+我是 林嘉怡，杭州声屿科技有限公司的语音算法工程师。白天和模型、数据集较劲，晚上也常把合成语音翻来覆去地听。我尤其在意 TTS 里那些“不像机器人”的部分：自然的停顿、换气、语气词，以及话语里微妙的情感起伏。
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## `$ cat profile.yaml`
+
+```yaml
+name: 林嘉怡
+role: 语音算法工程师
+city: 杭州
+timezone: Asia/Shanghai
+company: 杭州声屿科技有限公司
+interests:
+  - 语音大模型
+  - 真人 TTS 自然感
+  - 韵律 / 停顿 / 呼吸建模
+tools:
+  - Python / PyTorch
+  - NeMo
+  - ESPnet
+  - WhisperX
+```
+
+## `$ tail -f ~/experiments.log` — 最近在折腾的事
+
+最近的重点不是让模型“说对”，而是让它“说像一个人”。我在试三件事：
+
+- **副语言事件标注**：从播客和访谈音频里切出笑声、吸气、语气词和长停顿，做成可控 TTS 的额外条件。
+- **停顿建模**：把停顿时长从固定值改成由上下文预测，让句与句之间的呼吸感更自然。
+- **语音大模型对比**：用不同语音 tokenizer 做重建和生成，观察对真人质感的影响。
+
+这些都还在早期阶段，没有拿到稳定的结论，但每次听新的合成样本都挺有乐趣。
+
+## `$ crontab -l` — 日常节奏
+
+```
+0 10 * * * 听昨晚的合成 batch，记录不自然点
+0 14 * * * 清洗数据，补标注，跑小规模 fine-tune
+0 18 * * * 写评测脚本，做 AB 对比
+```
+
+我通常先“用耳朵挑毛病”，再把毛病转成具体的评测项。比如觉得“这里不像真人”，就回去看是停顿太规整、语气太平，还是能量曲线不自然。
+
+## 📋 当前任务板
+
+| 任务 | 为什么做 | 下一步 |
+| --- | --- | --- |
+| 副语言事件标注 | 让模型学会“人味儿”细节 | 先做 50 条播客片段的小样本测试 |
+| 停顿时长预测 | 解决合成语音节奏过于均匀的问题 | 加入上下文特征，对比固定停顿时长 |
+| 自然度 AB 评测 | 靠耳朵之外也要有可复现的指标 | 设计更细的 MOS 问卷，加入“像真人”选项 |
+| 真人 TTS 声线分析 | 理解不同音色的听感边界 | 整理语速、基频和能量曲线的可视化 |
+
+## 📝 语音日志
+
+<details>
+<summary>最近的个人笔记</summary>
+
+- 2025.06.04：把停顿长度改成上下文预测后，听感松弛了不少，但句尾容易拖，需要继续调。
+- 2025.06.10：同一句话用不同 tokenizer 重建，差别比想象中大，低频细节尤其影响“真人感”。
+- 2025.06.14：标注的时候发现，很多时候自然感来自“不完美”：一点气息、一点延迟，甚至一点口误。
+
+</details>
+
+感谢看到这里。如果你也在折腾 TTS 自然感，欢迎来聊聊合成声音里的“人味”。
